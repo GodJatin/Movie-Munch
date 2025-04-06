@@ -1,4 +1,3 @@
-// app/home/components/types/Movie.ts
 
 export interface Movie {
   title: string;
@@ -9,6 +8,7 @@ export interface Movie {
   genre?: string;
   rating?: string;
   duration?: string;
+  id?: string;
   cast?: string;
   releaseYear?: string;
   language?: string;

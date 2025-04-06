@@ -42,7 +42,6 @@ export function SignupFormDemo() {
         const { id, value } = e.target;
         setFormData({ ...formData, [id]: value });
       
-        // Remove the error message for the field being edited
         if (errors[id]) {
           setErrors((prevErrors) => {
             const newErrors = { ...prevErrors };
@@ -60,10 +59,8 @@ export function SignupFormDemo() {
           return;
         }
       
-        // Get existing users from localStorage
         const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
       
-        // Check if the email is already registered
         const emailExists = storedUsers.some((user: { email: string }) => user.email === formData.email);
         
         if (emailExists) {
@@ -72,13 +69,12 @@ export function SignupFormDemo() {
           return;
         }
       
-        // Store new user data
         const newUser = {
           firstname: formData.firstname,
           lastname: formData.lastname,
           email: formData.email,
           contact: formData.contact,
-          password: formData.password, // In production, hash passwords instead!
+          password: formData.password, 
         };
       
         storedUsers.push(newUser);
@@ -86,7 +82,6 @@ export function SignupFormDemo() {
       
         console.log("User registered successfully:", newUser);
         
-        // Redirect to login page after successful signup
         router.push("/loginform");
       };
       

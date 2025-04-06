@@ -43,10 +43,8 @@ export function LoginForm() {
     console.log("Entered Email:", formData.email);
     console.log("Entered Password:", formData.password);
   
-    // Get users from localStorage
     const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
   
-    // Find user with matching credentials
     const validUser = storedUsers.find(
       (user: { email: string; password: string }) =>
         user.email === formData.email && user.password === formData.password
@@ -55,7 +53,7 @@ export function LoginForm() {
     if (validUser) {
       console.log("Login successful");
       localStorage.setItem("currentUser", JSON.stringify(validUser));
-      window.location.href = "/home"; // Redirect to home page
+      window.location.href = "/home"; 
     } else {
       console.log("Invalid email or password");
       setErrors({ email: "Invalid email or password." });

@@ -1,7 +1,6 @@
-import Image from "next/image";
+
 import { ThreeDMarqueeDemo } from "./3d-marquee";
 import { ExpandableCardDemo } from "./gridlayout";
-import { FlipWordsDemo } from "./flipwords";
 import { FloatingNavDemo } from "./navbar";
 import { FocusCardsDemo } from "./focuscard";
 import { ImagesSliderDemo } from "./auto-image-slider";

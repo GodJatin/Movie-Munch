@@ -1,13 +1,13 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import { Movie } from "./types/Movie"; // adjust path if needed
+import { Movie } from "./types/Movie"; 
 
 
 interface MovieGridSectionProps {
   title: string;
   movies: Movie[];
   onWatchNow?: (title: string, url: string) => void;
-  onMovieClick: (movie: Movie) => void; // for popup/modal
+  onMovieClick: (movie: Movie) => void; 
 }
 
 const MovieGridSection: React.FC<MovieGridSectionProps> = ({

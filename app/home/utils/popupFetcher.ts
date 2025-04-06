@@ -1,4 +1,3 @@
-// app/home/components/utils/popupFetcher.ts
 import { Movie } from "../components/types/Movie";
 import { fetchYouTubeTrailer } from "../utils/youtubeTrailerFetcher";
 import { fetchStreamingLink as fetchStreamingUrl } from "./streamingFetcher";
@@ -12,7 +11,7 @@ export const fetchMoviePopupData = async (movie: Movie): Promise<Partial<Movie>>
   return {
     trailerUrl: trailerUrl || undefined,
     description: movie.description,
-    genre: movie.genre, // fallback if genre missing
+    genre: movie.genre, 
     releaseYear: movie.releaseYear || "2023",
     language: movie.language || "English",
     cast: movie.cast,

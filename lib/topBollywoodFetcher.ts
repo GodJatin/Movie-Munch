@@ -1,4 +1,3 @@
-// lib/topBollywoodFetcher.ts
 import { Movie } from "../app/home/components/types/Movie";
 import { fetchYouTubeTrailer } from "../app/home/utils/youtubeTrailerFetcher";
 import { fetchStreamingLink } from "../app/home/utils/streamingFetcher";
@@ -6,7 +5,6 @@ import { fetchStreamingLink } from "../app/home/utils/streamingFetcher";
 const TMDB_API_KEY = "4e839fb2bcd7ff2b574704596bb9e766";
 
 export async function fetchTopBollywood(): Promise<Movie[]> {
-  // Discover movies in Hindi (Bollywood)
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=hi&sort_by=vote_average.desc&page=1`
   );
@@ -15,13 +13,11 @@ export async function fetchTopBollywood(): Promise<Movie[]> {
 
   const movies: Movie[] = await Promise.all(
     data.results.slice(0, 10).map(async (movie: any) => {
-      // Get detailed info for extra metadata
       const detailsRes = await fetch(
         `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${TMDB_API_KEY}&language=en-US`
       );
       const movieData = await detailsRes.json();
 
-      // Get credits for cast information
       const creditsRes = await fetch(
         `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${TMDB_API_KEY}`
       );

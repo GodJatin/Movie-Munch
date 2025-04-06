@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { TypewriterEffectSmooth } from "./typewriter-effect";
 import TypewriterEffectFull from "@/app/typewriter-effect";
 
 export function LampDemo() {

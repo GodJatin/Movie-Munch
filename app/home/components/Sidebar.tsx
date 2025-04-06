@@ -8,15 +8,13 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   return (
     <>
-      {/* Blur background when menu is open & allow clicking outside to close */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"
-          onClick={toggleSidebar} // Clicking outside closes the sidebar
+          onClick={toggleSidebar} 
         ></div>
       )}
 
-      {/* Sidebar Menu */}
       <div
         id="sidebar-menu"
         className={`fixed top-0 right-0 w-64 h-full bg-gray-900 text-white shadow-lg transform ${

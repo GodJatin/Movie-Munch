@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image';
 import { motion } from "motion/react";
 import React from "react";
 import { ImagesSlider } from "@/components/ui/images-slider";

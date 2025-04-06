@@ -1,19 +1,19 @@
 import React from "react";
-import { Movie } from "./types/Movie"; // Adjust the path if needed
+import { Movie } from "./types/Movie"; 
 
 interface MovieCardProps {
   movie: Movie;
-  onClick?: (movie: Movie) => void; // ✅ Make it optional
+  onClick?: (movie: Movie) => void; 
   onWatchNow?: (title: string, url: string) => void;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, onClick, onWatchNow }) => {
   const handleCardClick = () => {
-    if (onClick) onClick(movie); // ✅ Prevent error if undefined
+    if (onClick) onClick(movie); 
   };
 
   const handleWatchNow = (e: React.MouseEvent) => {
-    e.stopPropagation(); // ⛔ Prevent opening popup when clicking Watch Now
+    e.stopPropagation(); 
     if (movie.streamingUrl && onWatchNow) {
       onWatchNow(movie.title, movie.streamingUrl);
     }

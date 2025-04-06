@@ -27,7 +27,7 @@ export const Card = React.memo(
         src={card.src}
         alt={card.title}
         fill
-        className="object-contain absolute inset-0" //object-cover to stretch image
+        className="object-contain absolute inset-0" 
       />
       <div
         className={cn(

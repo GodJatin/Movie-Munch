@@ -18,7 +18,7 @@ const Sidebar = () => {
         className="m-4 p-2 bg-red-600 hover:bg-red-700 rounded" 
         onClick={() => {
           localStorage.removeItem("currentUser");
-          window.location.href = "/login";
+          window.location.href = "/loginform";
         }}
       >
         Logout

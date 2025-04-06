@@ -3,15 +3,11 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import TrendingCarousel from "./components/TrendingCarousel";
-import MovieGridSection from "./components/MovieGridSection";
 import MovieSearch from "./components/MovieSearch";
 import ProfileModal from "./components/ProfileModal";
-import WatchPlatformModal from "./components/WatchPlatformModal";
 import MoviePopup from "./components/MoviePopup"; 
 import { Movie } from "./components/types/Movie";
-import { fetchTopSeries } from "@/lib/topSeriesFetcher"; // ✅ fixed import
-import MovieCard from "./components/MovieCard";
-import { fetchMovieTrailerAndDetails } from "@/lib/trailerFetcher";
+import { fetchTopSeries } from "@/lib/topSeriesFetcher"; 
 import { fetchTopBollywood } from "@/lib/topBollywoodFetcher";
 import { fetchTopHollywood } from "@/lib/topHollywoodFetcher";
 import { fetchTopTollywood } from "@/lib/topTollywoodFetcher";
@@ -23,24 +19,13 @@ const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const [topSeries, setTopSeries] = useState<Movie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  const [selectedMovieTitle, setSelectedMovieTitle] = useState<string | null>(null);
   const [bollywoodMovies, setBollywoodMovies] = useState<Movie[]>([]);
   const [hollywoodMovies, setHollywoodMovies] = useState<Movie[]>([]);
   const [tollywoodMovies, setTollywoodMovies] = useState<Movie[]>([]);
   const [series, setSeries] = useState<Movie[]>([]);
 
-  // useEffect(() => {
-  //   const loadSeries = async () => {
-  //     const data = await fetchTopSeries();
-  //     setTopSeries(data);
-  //   };
-  //   loadSeries();
-  // }, []);
-
   useEffect(() => {
-    // These fetchers should return a Promise<Movie[]>
     fetchTopBollywood().then(setBollywoodMovies);
     fetchTopHollywood().then(setHollywoodMovies);
     fetchTopTollywood().then(setTollywoodMovies);
@@ -77,7 +62,7 @@ const Home = () => {
         toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
       />
 
-      <div className="w-full px-4 md:px-8 pt-24 pb-8 transition-all"> {/* ✅ Added pt-24 to prevent overlap */}
+      <div className="w-full px-4 md:px-8 pt-24 pb-8 transition-all">
         <Header toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} user={user} />
 
         <div className="mt-6 space-y-16">
@@ -158,14 +143,6 @@ const Home = () => {
           onWatchNow={handleWatchNow}
         />
       )}
-
-      {/* {selectedMovieTitle && (
-        <WatchPlatformModal
-          movieTitle={selectedMovieTitle}
-          onClose={() => setSelectedMovieTitle(null)}
-          onPlatformSelect={handlePlatformSelect}
-        />
-      )} */}
 
       {isProfileOpen && (
         <ProfileModal onClose={() => setIsProfileOpen(false)} user={user} />

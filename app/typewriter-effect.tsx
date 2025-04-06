@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useAnimate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useAnimate } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 type Word = {
   text: string;
@@ -34,47 +34,39 @@ export default function TypewriterEffectFull() {
       const allSpans: HTMLSpanElement[] = [];
       const linesContainer = containerRef.current?.querySelectorAll(".type-line");
 
-      // Collect all spans from both lines in order
       linesContainer?.forEach((line) => {
         const spans = line.querySelectorAll("span[data-char]");
         spans.forEach((s) => allSpans.push(s as HTMLSpanElement));
       });
 
       while (true) {
-        // Typing forward
         for (let i = 0; i < allSpans.length; i++) {
           const charSpan = allSpans[i];
           await animate(charSpan, { opacity: 1 }, { duration: 0.04 });
 
-          // Move cursor
           if (cursorRef.current && charSpan) {
             const { left, top } = charSpan.getBoundingClientRect();
             const parentRect = scope.current.getBoundingClientRect();
             cursorRef.current.style.transform = `translate(${left - parentRect.left + charSpan.offsetWidth}px, ${top - parentRect.top}px)`;
           }
 
-          // Delay at end of word
           if (charSpan.innerText === " " || i === allSpans.length - 1 || charSpan.nextSibling?.textContent?.trim() === "") {
             await new Promise((res) => setTimeout(res, 300));
           }
         }
 
-        // Pause after all
         await new Promise((res) => setTimeout(res, 3000));
 
-        // Backward erase
         for (let i = allSpans.length - 1; i >= 0; i--) {
           const charSpan = allSpans[i];
           await animate(charSpan, { opacity: 0 }, { duration: 0.03 });
 
-          // Move cursor back
           if (cursorRef.current && charSpan) {
             const { left, top } = charSpan.getBoundingClientRect();
             const parentRect = scope.current.getBoundingClientRect();
             cursorRef.current.style.transform = `translate(${left - parentRect.left}px, ${top - parentRect.top}px)`;
           }
 
-          // Delay at end of word
           if (charSpan.innerText === " " || i === 0 || allSpans[i - 1]?.textContent?.trim() === "") {
             await new Promise((res) => setTimeout(res, 250));
           }

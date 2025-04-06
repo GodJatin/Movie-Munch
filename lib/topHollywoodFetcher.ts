@@ -1,4 +1,3 @@
-// lib/topHollywoodFetcher.ts
 import { Movie } from "../app/home/components/types/Movie";
 import { fetchYouTubeTrailer } from "../app/home/utils/youtubeTrailerFetcher";
 import { fetchStreamingLink } from "../app/home/utils/streamingFetcher";
@@ -6,7 +5,6 @@ import { fetchStreamingLink } from "../app/home/utils/streamingFetcher";
 const TMDB_API_KEY = "4e839fb2bcd7ff2b574704596bb9e766";
 
 export async function fetchTopHollywood(): Promise<Movie[]> {
-  // Discover movies in English (Hollywood)
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=en&sort_by=vote_average.desc&page=1`
   );

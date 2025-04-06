@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
-import WatchPlatformModal from "./WatchPlatformModal";
 
 const MovieSearch = () => {
   const [query, setQuery] = useState("");
@@ -35,7 +34,6 @@ const MovieSearch = () => {
   };
 
   const handleWatchNow = async (title: string) => {
-    // Use YouTube API to search full movie
     const YOUTUBE_API_KEY = "AIzaSyDfo7kkFkgd4W_AeTFLqxbjfhxtNVeLULQ";
     const response = await axios.get(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(

@@ -1,6 +1,5 @@
 "use client";
 import { ThreeDMarquee } from "@/components/ui/3d-marquee";
-import { FlipWordsDemo } from "./flipwords";
 import { FlipWords } from "@/components/ui/flip-words";
 
 const words = ["is Free", "Has No ads", "Provides Quality Content"];
@@ -44,7 +43,6 @@ export function ThreeDMarqueeDemo() {
         Movie Munch <br/><FlipWords words={words} /> <br />
       </h2>
 
-      {/* overlay */}
       <div className="absolute inset-0 z-10 h-full w-full bg-black/80 dark:bg-black/40" />
       <ThreeDMarquee
         className="pointer-events-none absolute inset-0 h-full w-full"

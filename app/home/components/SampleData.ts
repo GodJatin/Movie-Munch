@@ -1,4 +1,3 @@
-// /home/components/SampleData.ts
 
 export const trendingMovies = [
   {
@@ -22,7 +21,6 @@ export const trendingMovies = [
     genre: "Action, Fantasy",
     rating: 7.6,
   },
-  // Add more...
 ];
 
 export const topHollywoodMovies = [
@@ -47,7 +45,6 @@ export const topHollywoodMovies = [
     genre: "Sci-Fi, Thriller",
     rating: 8.8,
   },
-  // Add up to 10...
 ];
 
 export const topBollywoodMovies = [
@@ -72,7 +69,6 @@ export const topBollywoodMovies = [
     genre: "Drama, Music",
     rating: 7.9,
   },
-  // Add up to 10...
 ];
 
 export const topSeries = [
@@ -100,5 +96,4 @@ export const topSeries = [
     rating: 8.7,
     seasons: 4,
   },
-  // Add up to 10...
 ];

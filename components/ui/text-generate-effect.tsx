@@ -32,10 +32,8 @@ export const TextGenerateEffect = ({
           }
         );
 
-        // Pause before hiding
-        await new Promise((resolve) => setTimeout(resolve, 3000)); // Pause for 1 second
+        await new Promise((resolve) => setTimeout(resolve, 3000)); 
 
-        // Reset animation
         await animate(
           "span",
           {

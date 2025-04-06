@@ -1,4 +1,4 @@
-// components/MoviePopup.tsx
+
 import React, { useEffect, useState } from "react";
 import MovieDetailsModal from "./MovieDetailsModal";
 import { Movie } from "./types/Movie";

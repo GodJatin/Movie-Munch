@@ -1,4 +1,3 @@
-// app/home/components/utils/youtubeTrailerFetcher.ts
 import axios from "axios";
 
 const YOUTUBE_API_KEY = "AIzaSyDfo7kkFkgd4W_AeTFLqxbjfhxtNVeLULQ";

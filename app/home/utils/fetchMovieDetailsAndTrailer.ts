@@ -1,4 +1,3 @@
-// utils/fetchMovieDetailsAndTrailer.ts
 import { Movie } from "../components/types/Movie";
 
 const TMDB_API_KEY = "4e839fb2bcd7ff2b574704596bb9e766";
@@ -6,7 +5,6 @@ const YOUTUBE_API_KEY = "AIzaSyDfo7kkFkgd4W_AeTFLqxbjfhxtNVeLULQ";
 
 export async function fetchMovieDetailsAndTrailer(title: string): Promise<Movie> {
   try {
-    // Step 1: Search TMDb for movie or series
     const searchRes = await fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}`
     );
@@ -22,7 +20,6 @@ export async function fetchMovieDetailsAndTrailer(title: string): Promise<Movie>
     const detailsRes = await fetch(detailsUrl);
     const details = await detailsRes.json();
 
-    // Step 2: Get Trailer from YouTube
     const ytRes = await fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
         `${title} official trailer`
@@ -33,7 +30,6 @@ export async function fetchMovieDetailsAndTrailer(title: string): Promise<Movie>
       ? `https://www.youtube.com/watch?v=${ytData.items[0].id.videoId}`
       : undefined;
 
-    // Step 3: Build enriched Movie object
     const enrichedMovie: Movie = {
       title: isTV ? details.name : details.title,
       image: details.poster_path

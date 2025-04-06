@@ -5,7 +5,6 @@ const YOUTUBE_API_KEY = "AIzaSyDfo7kkFkgd4W_AeTFLqxbjfhxtNVeLULQ";
 
 export async function fetchMovieTrailerAndDetails(title: string): Promise<Partial<Movie>> {
   try {
-    // Step 1: Search on TMDb for show details
     const searchRes = await fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}`
     );
@@ -13,16 +12,14 @@ export async function fetchMovieTrailerAndDetails(title: string): Promise<Partia
     const item = searchData.results?.[0];
     if (!item) return {};
 
-    const mediaType = item.media_type || "tv"; // default to TV
+    const mediaType = item.media_type || "tv"; 
     const id = item.id;
 
-    // Step 2: Fetch detailed metadata
     const detailsRes = await fetch(
       `https://api.themoviedb.org/3/${mediaType}/${id}?api_key=${TMDB_API_KEY}&language=en-US`
     );
     const details = await detailsRes.json();
 
-    // Step 3: Get trailer from YouTube
     const ytRes = await fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
         `${title} official trailer`

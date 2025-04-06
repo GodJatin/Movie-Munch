@@ -8,7 +8,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ toggleSidebar, user }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const profileDropdown = document.getElementById("profile-dropdown");
@@ -28,9 +27,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, user }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-gray-800 p-4 flex justify-end items-center z-50 shadow-md">
-      {/* Right Side - Menu & Profile */}
       <div className="flex items-center space-x-4">
-        {/* Menu Button (Right-Aligned) */}
         <button
           className="bg-gray-700 text-white px-4 py-2 rounded-md transition-transform hover:scale-105"
           onClick={(e) => {
@@ -41,7 +38,6 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, user }) => {
           ☰ Menu
         </button>
 
-        {/* Profile Section */}
         <div className="relative">
           <img
             src={user.image || "https://i1.sndcdn.com/artworks-Uhee91UCPp7ic4Sw-oAlLlg-t1080x1080.jpg"}
@@ -53,7 +49,6 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, user }) => {
             }}
           />
 
-          {/* Profile Dropdown */}
           {isProfileOpen && (
             <div
               id="profile-dropdown"

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
   
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"), // Use localhost URL for development
+  metadataBase: new URL("http://localhost:3000"), 
   title: "Movie Munch",
   description: "All ott at one platform",
   openGraph: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "All ott at one platform",
     images: [
       {
-        url: "/images/Raiden.jpg", // Corrected path to your image
+        url: "/images/Raiden.jpg", 
         width: 800,
         height: 600,
         alt: "Movie Munch Logo",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/mm.ico", // Path to your favicon
+    icon: "/mm.ico", 
   },
 };
 

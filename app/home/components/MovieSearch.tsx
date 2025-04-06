@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import { fetchStreamingLink } from "../utils/streamingFetcher";
-import { Movie } from "./types/Movie"; // adjust path if needed
+import { Movie } from "./types/Movie"; 
 
 interface MovieSearchProps {
   onMovieClick: (movie: Movie) => void;
@@ -41,7 +41,6 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ onWatchNow }) => {
       })
     );
 
-    // Only show if available
     setResults(enriched.filter((item) => item.streamingUrl));
     setLoading(false);
   };
@@ -69,7 +68,7 @@ const MovieSearch: React.FC<MovieSearchProps> = ({ onWatchNow }) => {
               title: movie.Title,
               image: movie.Poster !== "N/A" ? movie.Poster : "/placeholder.jpg",
               description: movie.Year,
-              streamingUrl: movie.streamingUrl, // ✅ added
+              streamingUrl: movie.streamingUrl, 
             }}
             onClick={() => {}}
             onWatchNow={() => onWatchNow(movie.Title, movie.streamingUrl)}

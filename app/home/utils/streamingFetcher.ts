@@ -1,11 +1,9 @@
-// utils/streamingFetcher.ts
 import axios from "axios";
 
 const YOUTUBE_API_KEY = "AIzaSyDfo7kkFkgd4W_AeTFLqxbjfhxtNVeLULQ";
 const ARCHIVE_SEARCH_URL = "https://archive.org/advancedsearch.php";
 const SUPEREMBED_BASE = "https://multiembed.mov/directstream.php?video=";
 
-// ✅ Updated Trusted Movie Channels
 const TRUSTED_CHANNELS = [
   { name: "T-Series", id: "UCq-Fj5jknLsUf-MWSy4_brA" },
   { name: "Shemaroo Gujarati Manoranjan", id: "UCpvuV0CUtBSPLquhP9-vQFw" },
@@ -16,7 +14,6 @@ const TRUSTED_CHANNELS = [
 ];
 
 export const fetchStreamingLink = async (title: string): Promise<string | null> => {
-  // ✅ Only search trusted movie sources
   for (const channel of TRUSTED_CHANNELS) {
     const ytRes = await axios.get(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
@@ -30,7 +27,6 @@ export const fetchStreamingLink = async (title: string): Promise<string | null> 
     }
   }
 
-  // ✅ Archive.org fallback
   const archiveRes = await axios.get(
     `${ARCHIVE_SEARCH_URL}?q=${encodeURIComponent(
       title
@@ -41,7 +37,6 @@ export const fetchStreamingLink = async (title: string): Promise<string | null> 
     return `https://archive.org/details/${docs[0].identifier}`;
   }
 
-  // ✅ SuperEmbed fallback
   const superembedUrl = SUPEREMBED_BASE + encodeURIComponent(title);
   try {
     const check = await axios.get(superembedUrl);
@@ -49,8 +44,7 @@ export const fetchStreamingLink = async (title: string): Promise<string | null> 
       return superembedUrl;
     }
   } catch (err) {
-    // Ignore failed SuperEmbed requests
   }
 
-  return null; // ❌ Nothing found
+  return null; 
 };
