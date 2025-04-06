@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from 'react';
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { fetchStreamingLink } from "../home/utils/streamingFetcher";
@@ -57,7 +58,8 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-black text-white flex flex-col items-center p-4">
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="w-full h-screen bg-black text-white flex flex-col items-center p-4">
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
       {platform && <p className="mb-2 text-sm text-gray-400">Source: {platform}</p>}
       <div className="w-full max-w-6xl aspect-video rounded overflow-hidden shadow-xl">
@@ -69,6 +71,8 @@ const WatchPage = () => {
         ></iframe>
       </div>
     </div>
+    </Suspense>
+    
   );
 };
 
